@@ -26,6 +26,7 @@ import {
 type TabMode = 'overview' | 'pipeline' | 'schema';
 
 const ROMAN_INDEX = ['I', 'II', 'III', 'IV', 'V'];
+const TABS: TabMode[] = ['overview', 'pipeline', 'schema'];
 
 export function ProjectShowcase() {
   const [activeProject, setActiveProject] = React.useState<Project>(PROJECTS[0]);
@@ -36,23 +37,104 @@ export function ProjectShowcase() {
 
   const prefersReducedMotion = useReducedMotion();
 
-  const handleCopyCode = async (code: string) => {
+  // Listen for cross-component project selection (e.g. from CommandPalette)
+  React.useEffect(() => {
+    const handleSelectProject = (e: CustomEvent<string>) => {
+      const found = PROJECTS.find((p) => p.id === e.detail);
+      if (found) {
+        setActiveProject(found);
+        setCopiedCode(false);
+        setIsAccessDrawerOpen(false);
+      }
+    };
+    window.addEventListener('select-project' as any, handleSelectProject);
+    return () => window.removeEventListener('select-project' as any, handleSelectProject);
+  }, []);
+
+  const copyToClipboard = async (text: string): Promise<boolean> => {
     try {
-      await navigator.clipboard.writeText(code);
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch {
+      // Fall through to textarea fallback
+    }
+
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      textArea.style.top = '-9999px';
+      textArea.setAttribute('readonly', '');
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      const success = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      return success;
+    } catch {
+      return false;
+    }
+  };
+
+  const handleCopyCode = async (code: string) => {
+    const ok = await copyToClipboard(code);
+    if (ok) {
       setCopiedCode(true);
       setTimeout(() => setCopiedCode(false), 2000);
-    } catch {
-      // Fallback
     }
   };
 
   const handleCopyEmail = async (email: string) => {
-    try {
-      await navigator.clipboard.writeText(email);
+    const ok = await copyToClipboard(email);
+    if (ok) {
       setCopiedEmail(true);
       setTimeout(() => setCopiedEmail(false), 2000);
-    } catch {
-      // Fallback
+    }
+  };
+
+  const handleRailKeyDown = (e: React.KeyboardEvent, currentIndex: number) => {
+    let nextIndex = -1;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      nextIndex = (currentIndex + 1) % PROJECTS.length;
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      nextIndex = (currentIndex - 1 + PROJECTS.length) % PROJECTS.length;
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      nextIndex = 0;
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      nextIndex = PROJECTS.length - 1;
+    }
+
+    if (nextIndex >= 0) {
+      const nextProj = PROJECTS[nextIndex];
+      setActiveProject(nextProj);
+      setCopiedCode(false);
+      setIsAccessDrawerOpen(false);
+      document.getElementById(`project-tab-${nextProj.id}`)?.focus();
+    }
+  };
+
+  const handleViewTabKeyDown = (e: React.KeyboardEvent, currentTab: TabMode) => {
+    const currentIndex = TABS.indexOf(currentTab);
+    let nextIndex = -1;
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      nextIndex = (currentIndex + 1) % TABS.length;
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      nextIndex = (currentIndex - 1 + TABS.length) % TABS.length;
+    }
+
+    if (nextIndex >= 0) {
+      const nextTab = TABS[nextIndex];
+      setActiveTab(nextTab);
+      document.getElementById(`tab-${nextTab}`)?.focus();
     }
   };
 
@@ -92,6 +174,7 @@ export function ProjectShowcase() {
                 aria-controls={`project-panel-${project.id}`}
                 aria-selected={isSelected}
                 tabIndex={0}
+                onKeyDown={(e) => handleRailKeyDown(e, index)}
                 onClick={() => {
                   setActiveProject(project);
                   setCopiedCode(false);
@@ -193,7 +276,11 @@ export function ProjectShowcase() {
 
           {/* Access Note & Inquiry Drawer */}
           {isAccessDrawerOpen && (
-            <div className="p-6 bg-obsidian rounded-lg flex flex-col gap-4 text-xs border border-charcoal-border">
+            <div
+              role="region"
+              aria-label="Architecture access note"
+              className="p-6 bg-obsidian rounded-lg flex flex-col gap-4 text-xs border border-charcoal-border"
+            >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-electric-apricot font-semibold">
                   <Shield className="w-4 h-4" />
@@ -265,8 +352,18 @@ export function ProjectShowcase() {
           </div>
 
           {/* Interactive Inspector Tabs */}
-          <div className="flex items-center gap-1.5 p-1.5 bg-obsidian rounded-lg self-start border border-charcoal-border">
+          <div
+            role="tablist"
+            aria-label="Case Study Views"
+            className="flex items-center gap-1.5 p-1.5 bg-obsidian rounded-lg self-start border border-charcoal-border"
+          >
             <button
+              role="tab"
+              id="tab-overview"
+              aria-controls="panel-overview"
+              aria-selected={activeTab === 'overview'}
+              tabIndex={0}
+              onKeyDown={(e) => handleViewTabKeyDown(e, 'overview')}
               onClick={() => setActiveTab('overview')}
               className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded text-xs font-semibold transition-colors cursor-pointer ${
                 activeTab === 'overview'
@@ -278,6 +375,12 @@ export function ProjectShowcase() {
               <span>System Overview</span>
             </button>
             <button
+              role="tab"
+              id="tab-pipeline"
+              aria-controls="panel-pipeline"
+              aria-selected={activeTab === 'pipeline'}
+              tabIndex={0}
+              onKeyDown={(e) => handleViewTabKeyDown(e, 'pipeline')}
               onClick={() => setActiveTab('pipeline')}
               className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded text-xs font-semibold transition-colors cursor-pointer ${
                 activeTab === 'pipeline'
@@ -289,6 +392,12 @@ export function ProjectShowcase() {
               <span>Execution Pipeline</span>
             </button>
             <button
+              role="tab"
+              id="tab-schema"
+              aria-controls="panel-schema"
+              aria-selected={activeTab === 'schema'}
+              tabIndex={0}
+              onKeyDown={(e) => handleViewTabKeyDown(e, 'schema')}
               onClick={() => setActiveTab('schema')}
               className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded text-xs font-semibold transition-colors cursor-pointer ${
                 activeTab === 'schema'
@@ -303,7 +412,12 @@ export function ProjectShowcase() {
 
           {/* Tab View: Overview */}
           {activeTab === 'overview' && (
-            <div className="flex flex-col gap-8">
+            <div
+              role="tabpanel"
+              id="panel-overview"
+              aria-labelledby="tab-overview"
+              className="flex flex-col gap-8"
+            >
               {/* Problem & Solution Synthesis */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                 <div className="flex flex-col gap-2.5 p-5 bg-obsidian/70 rounded-lg border border-charcoal-border">
@@ -366,7 +480,12 @@ export function ProjectShowcase() {
 
           {/* Tab View: Pipeline */}
           {activeTab === 'pipeline' && (
-            <div className="flex flex-col gap-6">
+            <div
+              role="tabpanel"
+              id="panel-pipeline"
+              aria-labelledby="tab-pipeline"
+              className="flex flex-col gap-6"
+            >
               <span className="text-xs font-semibold text-natural-taupe">
                 Runtime Execution Pipeline
               </span>
@@ -411,7 +530,12 @@ export function ProjectShowcase() {
 
           {/* Tab View: Schema & Data Contract */}
           {activeTab === 'schema' && (
-            <div className="flex flex-col gap-4">
+            <div
+              role="tabpanel"
+              id="panel-schema"
+              aria-labelledby="tab-schema"
+              className="flex flex-col gap-4"
+            >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-semibold text-natural-taupe">
                   <FileCode className="w-4 h-4 text-electric-apricot" />

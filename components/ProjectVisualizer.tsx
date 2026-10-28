@@ -83,7 +83,7 @@ export function ProjectVisualizer({ project }: ProjectVisualizerProps) {
               Offline-First Edge Vector Search Architecture
             </span>
             <samp className="font-mono text-[10px] text-taupe-muted">
-              INFERENCE // ONNX WASM &lt;180ms
+              INFERENCE // ONNX RUNTIME WASM
             </samp>
           </div>
 
@@ -108,7 +108,7 @@ export function ProjectVisualizer({ project }: ProjectVisualizerProps) {
               <span className="text-[10px] text-electric-apricot font-semibold">Stage III</span>
               <span className="font-bold text-warm-ivory">IndexedDB K-NN</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Local cosine distance across 8,500 indexed flora
+                Local cosine distance across botanical taxonomy dataset
               </span>
             </div>
 
@@ -129,43 +129,43 @@ export function ProjectVisualizer({ project }: ProjectVisualizerProps) {
           <div className="flex items-center justify-between text-xs text-natural-taupe">
             <span className="font-semibold text-warm-ivory flex items-center gap-2">
               <GitBranch className="w-3.5 h-3.5 text-electric-apricot" />
-              AST Dependency Graph &amp; Codemod Pipeline
+              AST Dependency Graph &amp; Exit Capsule Pipeline
             </span>
             <samp className="font-mono text-[10px] text-taupe-muted">
-              ANALYZER // SWC AST PARSER
+              ENGINE // GEMMA 4 + AST
             </samp>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
             <div className="p-3 bg-soft-charcoal/80 rounded flex flex-col gap-1.5">
               <span className="text-[10px] text-electric-apricot font-semibold">Stage I</span>
-              <span className="font-bold text-warm-ivory">Lockfile DAG</span>
+              <span className="font-bold text-warm-ivory">AST Ingestion</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Topological transitive dependency traversal
+                Parses dependency imports and deprecated symbols
               </span>
             </div>
 
             <div className="p-3 bg-soft-charcoal/80 rounded flex flex-col gap-1.5">
               <span className="text-[10px] text-electric-apricot font-semibold">Stage II</span>
-              <span className="font-bold text-warm-ivory">AST Export Diff</span>
+              <span className="font-bold text-warm-ivory">Decay Classifier</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Semantic TypeScript export signature diffing
+                Detects abandoned libraries and Python 3.12+ shifts
               </span>
             </div>
 
             <div className="p-3 bg-soft-charcoal/80 rounded flex flex-col gap-1.5">
               <span className="text-[10px] text-electric-apricot font-semibold">Stage III</span>
-              <span className="font-bold text-warm-ivory">Breaking Classifier</span>
+              <span className="font-bold text-warm-ivory">Gemma 4 Capsule</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Identifies removed exports and union mutations
+                Synthesizes surgical modernization migration patches
               </span>
             </div>
 
             <div className="p-3 bg-organic-olive/50 rounded flex flex-col gap-1.5">
               <span className="text-[10px] text-warm-ivory font-semibold">Stage IV</span>
-              <span className="font-bold text-warm-ivory">Codemod Generator</span>
+              <span className="font-bold text-warm-ivory">Test Verification</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Synthesizes compatibility polyfills &amp; tests
+                Deterministic test runner verifies zero regression
               </span>
             </div>
           </div>
@@ -178,10 +178,10 @@ export function ProjectVisualizer({ project }: ProjectVisualizerProps) {
           <div className="flex items-center justify-between text-xs text-natural-taupe">
             <span className="font-semibold text-warm-ivory flex items-center gap-2">
               <Sliders className="w-3.5 h-3.5 text-electric-apricot" />
-              Receivables Behavioral Risk &amp; Escalation Machine
+              Tabular Risk Quantification &amp; Follow-Up Engine
             </span>
             <samp className="font-mono text-[10px] text-taupe-muted">
-              ENGINE // FINITE STATE CADENCE
+              MODEL // TABPFN + GEMMA
             </samp>
           </div>
 
@@ -190,31 +190,31 @@ export function ProjectVisualizer({ project }: ProjectVisualizerProps) {
               <span className="text-[10px] text-electric-apricot font-semibold">Stage I</span>
               <span className="font-bold text-warm-ivory">Ledger Ingestion</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Syncs Stripe invoice aging and settlement logs
+                In-memory parse of invoice history with zero PII store
               </span>
             </div>
 
             <div className="p-3 bg-soft-charcoal/80 rounded flex flex-col gap-1.5">
               <span className="text-[10px] text-electric-apricot font-semibold">Stage II</span>
-              <span className="font-bold text-warm-ivory">Risk Vectoring</span>
+              <span className="font-bold text-warm-ivory">TabPFN Risk</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Delinquency probability from payment history
+                Tabular prior-fitted late payment probability
               </span>
             </div>
 
             <div className="p-3 bg-soft-charcoal/80 rounded flex flex-col gap-1.5">
               <span className="text-[10px] text-electric-apricot font-semibold">Stage III</span>
-              <span className="font-bold text-warm-ivory">Adaptive Cadence</span>
+              <span className="font-bold text-warm-ivory">Gemma Drafting</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Multi-stage follow-ups tuned to client tenure
+                Calibrated follow-ups with risk-tiered tone
               </span>
             </div>
 
             <div className="p-3 bg-organic-olive/50 rounded flex flex-col gap-1.5">
               <span className="text-[10px] text-warm-ivory font-semibold">Stage IV</span>
-              <span className="font-bold text-warm-ivory">Instant Settlement</span>
+              <span className="font-bold text-warm-ivory">Mail Handoff</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Friction-free portal with automatic reconciliation
+                One-click prefill into Gmail compose via mailto:
               </span>
             </div>
           </div>
@@ -227,19 +227,19 @@ export function ProjectVisualizer({ project }: ProjectVisualizerProps) {
           <div className="flex items-center justify-between text-xs text-natural-taupe">
             <span className="font-semibold text-warm-ivory flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-electric-apricot" />
-              Public Affidavit OCR &amp; Geospatial Ward Pipeline
+              Civic Ingestion &amp; Ward Candidate Report Card
             </span>
             <samp className="font-mono text-[10px] text-taupe-muted">
-              DELIVERY // EDGE SSR &lt;80ms
+              DELIVERY // 227 WARDS · GEMINI AI
             </samp>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
             <div className="p-3 bg-soft-charcoal/80 rounded flex flex-col gap-1.5">
               <span className="text-[10px] text-electric-apricot font-semibold">Stage I</span>
-              <span className="font-bold text-warm-ivory">Affidavit OCR</span>
+              <span className="font-bold text-warm-ivory">Sync Engine</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Parses scanned PDF election commission filings
+                Parses official election disclosures and assets
               </span>
             </div>
 
@@ -247,7 +247,7 @@ export function ProjectVisualizer({ project }: ProjectVisualizerProps) {
               <span className="text-[10px] text-electric-apricot font-semibold">Stage II</span>
               <span className="font-bold text-warm-ivory">Disclosure Schema</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Normalizes criminal, asset, and educational data
+                Normalizes criminal, asset, and promise data
               </span>
             </div>
 
@@ -255,15 +255,15 @@ export function ProjectVisualizer({ project }: ProjectVisualizerProps) {
               <span className="text-[10px] text-electric-apricot font-semibold">Stage III</span>
               <span className="font-bold text-warm-ivory">Ward GIS Linker</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                Intersects candidate profiles with municipal wards
+                Maps 1,578+ candidates across 227 municipal wards
               </span>
             </div>
 
             <div className="p-3 bg-organic-olive/50 rounded flex flex-col gap-1.5">
               <span className="text-[10px] text-warm-ivory font-semibold">Stage IV</span>
-              <span className="font-bold text-warm-ivory">Edge SSR</span>
+              <span className="font-bold text-warm-ivory">Gemini Summaries</span>
               <span className="text-natural-taupe text-[11px] leading-tight">
-                High-performance delivery optimized for mobile 3G
+                Objective, non-partisan AI civic analysis
               </span>
             </div>
           </div>

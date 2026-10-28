@@ -62,9 +62,9 @@ export default function RootLayout({
     '@type': 'Person',
     name: 'Omkar Dhakane',
     url: 'https://omkar.dev',
-    jobTitle: 'Full-Stack Engineer & AI Systems Architect',
+    jobTitle: 'Full-Stack Engineer & AI Systems Developer',
     sameAs: [
-      'https://github.com/omkardhakane',
+      'https://github.com/OmkarD09',
       'https://linkedin.com/in/omkardhakane',
     ],
     knowsAbout: [

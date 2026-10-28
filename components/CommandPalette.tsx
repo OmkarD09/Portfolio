@@ -24,13 +24,59 @@ export function CommandPalette() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Body scroll locking when open
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const handleCopyEmail = async () => {
+    let success = false;
     try {
-      await navigator.clipboard.writeText('contact@omkar.dev');
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText('contact@omkar.dev');
+        success = true;
+      }
+    } catch {
+      // Fall through to textarea fallback
+    }
+
+    if (!success) {
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = 'contact@omkar.dev';
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        textArea.style.top = '-9999px';
+        textArea.setAttribute('readonly', '');
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        success = document.execCommand('copy');
+        document.body.removeChild(textArea);
+      } catch {
+        success = false;
+      }
+    }
+
+    if (success) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // Fallback
+    }
+  };
+
+  const handleSelectProject = (projectId: string) => {
+    window.dispatchEvent(new CustomEvent('select-project', { detail: projectId }));
+    setIsOpen(false);
+    const element = document.getElementById('projects');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -46,7 +92,7 @@ export function CommandPalette() {
       <div className="fixed bottom-6 right-6 z-40">
         <button
           onClick={() => setIsOpen(true)}
-          className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-soft-charcoal text-warm-ivory hover:text-electric-apricot rounded-full text-xs font-semibold cursor-pointer transition-colors"
+          className="inline-flex items-center gap-2.5 px-4 py-2.5 bg-soft-charcoal text-warm-ivory hover:text-electric-apricot rounded-full text-xs font-semibold cursor-pointer transition-colors border border-charcoal-border/70"
           aria-label="Open developer command palette"
         >
           <Terminal className="w-3.5 h-3.5 text-electric-apricot" />
@@ -59,8 +105,17 @@ export function CommandPalette() {
 
       {/* Modal Backdrop & Drawer */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/90">
-          <div className="w-full max-w-xl bg-soft-charcoal rounded-xl p-6 flex flex-col gap-5">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Developer Command Palette"
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-obsidian/90 animate-in fade-in-0 duration-150"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-xl bg-soft-charcoal rounded-xl p-6 flex flex-col gap-5 border border-charcoal-border"
+          >
             {/* Search Input Bar */}
             <div className="flex items-center justify-between pb-3">
               <div className="flex items-center gap-3 w-full">
@@ -90,8 +145,9 @@ export function CommandPalette() {
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <button
+                  type="button"
                   onClick={handleCopyEmail}
-                  className="flex items-center justify-between p-3 bg-obsidian rounded-md text-xs font-medium text-warm-ivory hover:text-electric-apricot transition-colors text-left cursor-pointer"
+                  className="flex items-center justify-between p-3 bg-obsidian rounded-md text-xs font-medium text-warm-ivory hover:text-electric-apricot transition-colors text-left cursor-pointer border border-charcoal-border/40"
                 >
                   <div className="flex items-center gap-2">
                     {copied ? (
@@ -105,16 +161,16 @@ export function CommandPalette() {
                 </button>
 
                 <a
-                  href="https://github.com/omkardhakane"
+                  href="https://github.com/OmkarD09"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3 bg-obsidian rounded-md text-xs font-medium text-warm-ivory hover:text-electric-apricot transition-colors"
+                  className="flex items-center justify-between p-3 bg-obsidian rounded-md text-xs font-medium text-warm-ivory hover:text-electric-apricot transition-colors border border-charcoal-border/40"
                 >
                   <div className="flex items-center gap-2">
                     <ArrowUpRight className="w-3.5 h-3.5 text-electric-apricot" />
                     <span>GitHub Profile</span>
                   </div>
-                  <span className="text-[10px] text-natural-taupe">@omkardhakane</span>
+                  <span className="text-[10px] text-natural-taupe">@OmkarD09</span>
                 </a>
               </div>
             </div>
@@ -126,14 +182,14 @@ export function CommandPalette() {
               </span>
               <div className="flex flex-col gap-1.5">
                 {filteredProjects.map((project) => (
-                  <a
+                  <button
                     key={project.id}
-                    href="#projects"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-between p-3 bg-obsidian/70 hover:bg-obsidian rounded-md transition-colors text-warm-ivory hover:text-electric-apricot"
+                    type="button"
+                    onClick={() => handleSelectProject(project.id)}
+                    className="flex items-center justify-between p-3 bg-obsidian/70 hover:bg-obsidian rounded-md transition-colors text-warm-ivory hover:text-electric-apricot text-left cursor-pointer border border-charcoal-border/30"
                   >
                     <div className="flex items-center gap-3">
-                      <Layers className="w-3.5 h-3.5 text-electric-apricot" />
+                      <Layers className="w-3.5 h-3.5 text-electric-apricot shrink-0" />
                       <div>
                         <div className="text-xs font-semibold">{project.title}</div>
                         <div className="text-[11px] text-natural-taupe line-clamp-1">
@@ -141,11 +197,16 @@ export function CommandPalette() {
                         </div>
                       </div>
                     </div>
-                    <span className="text-[10px] text-natural-taupe shrink-0">
+                    <span className="text-[10px] text-natural-taupe shrink-0 ml-2">
                       {project.category.split('·')[0].trim()}
                     </span>
-                  </a>
+                  </button>
                 ))}
+                {filteredProjects.length === 0 && (
+                  <p className="text-xs text-natural-taupe py-4 text-center">
+                    No matching systems found.
+                  </p>
+                )}
               </div>
             </div>
 

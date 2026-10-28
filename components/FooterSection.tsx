@@ -35,8 +35,8 @@ export function FooterSection() {
             <ArrowUpRight className="w-6 h-6 text-electric-apricot" />
           </a>
           <p className="text-base text-natural-taupe max-w-md leading-relaxed mt-2">
-            Available for principal engineering roles, AI systems advisory, and
-            challenging full-stack initiatives with high technical complexity.
+            Computer Engineering student building full-stack products and AI-powered applications.
+            Available for software engineering roles, internships, and collaborative development.
           </p>
         </div>
 
@@ -46,7 +46,7 @@ export function FooterSection() {
             Profiles &amp; Code
           </span>
           <a
-            href="https://github.com/omkardhakane"
+            href="https://github.com/OmkarD09"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-base text-warm-ivory hover:text-electric-apricot transition-colors duration-200"
@@ -84,7 +84,7 @@ export function FooterSection() {
             <div>Framework: Next.js 16 App Router</div>
             <div>Runtime: React 19 + Turbopack</div>
             <div>Palette: Dark Organic (#151515)</div>
-            <div>A11y: WCAG AAA Compliant</div>
+            <div>A11y: 14.8:1 AAA Text Contrast</div>
           </div>
         </div>
       </div>

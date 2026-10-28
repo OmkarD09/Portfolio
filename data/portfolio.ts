@@ -46,20 +46,20 @@ export const PROJECTS: Project[] = [
     problem:
       'Doctors in high-volume rural clinics spend over 40% of consultation time typing unstructured notes across diverse dialects, leading to clinician burnout and loss of critical diagnostic nuances.',
     solution:
-      'Engineered an ambient clinical companion that captures doctor-patient verbal consultations, transcribes regional dialects with medical ontology mapping, and compiles structured electronic health records with zero keyboard interruption.',
+      'Engineered an AI-assisted clinical intake companion for Indian healthcare workflows that structures conversational patient symptoms into a ClinicalState, generating physician-reviewable SOAP documentation before consultations.',
     architecture: [
-      'Ambient audio capture pipeline with noise suppression',
-      'Multilingual speech-to-text with medical term alignment',
-      'Clinical ontology entity extraction (SNOMED-CT / ICD-10)',
+      'Conversational intake pipeline with patient-friendly adaptive questioning',
+      'Clinical ontology entity extraction aligned with ABDM and FHIR R4',
       'Deterministic structured SOAP note generation',
+      'Zero-dependency offline mode with SQLite and simulated local providers',
     ],
-    techStack: ['Next.js', 'TypeScript', 'WebAudio API', 'LLM Agents', 'FastAPI', 'Tailwind CSS'],
+    techStack: ['React 19', 'TypeScript', 'FastAPI', 'Python 3.12', 'ABDM / FHIR R4', 'Tailwind CSS'],
     contributions: [
-      'Architected offline-resilient audio chunking and socket streaming pipeline',
-      'Designed deterministic schema validation for zero-hallucination prescription drafting',
-      'Engineered privacy-first client-side de-identification of patient telemetry',
+      'Architected conversational pre-consultation intake engine with structured ClinicalState synthesis',
+      'Implemented FHIR R4 and ABDM schema validation for clinician-reviewable encounter summaries',
+      'Engineered zero-dependency offline fallback mode running on local SQLite and simulated providers',
     ],
-    metricsOrState: 'Active Core Prototype · Clinical Evaluation Ready',
+    metricsOrState: 'Architectural Prototype · Multilingual Clinical Pipeline & Schema Specification',
     pipeline: [
       {
         step: 'I',
@@ -111,10 +111,11 @@ export const PROJECTS: Project[] = [
 }`,
     },
     links: {
-      accessStatus: 'private',
-      accessLabel: 'Private Codebase · Architecture on Request',
+      github: 'https://github.com/OmkarD09/SwasthyaVaani',
+      accessStatus: 'public',
+      accessLabel: 'Open Source · Smart India Hackathon',
       accessNote:
-        'Clinical encounter data pipelines and voice de-identification models are restricted to prevent telemetry exposure. Architecture walkthroughs are available for selective evaluation.',
+        'AI-assisted clinical intake companion engineered for Indian healthcare workflows (SIH 2026). Public code and documentation available on GitHub.',
       inquirySubject: 'Architecture Access: SwasthyaVaani',
     },
   },
@@ -126,20 +127,20 @@ export const PROJECTS: Project[] = [
     problem:
       'Naturalists, forest guards, and field biologists working in remote wilderness areas lose access to cloud models and databases precisely when identifying rare species and cataloging ecological specimens.',
     solution:
-      'Built an offline-first field recorder utilizing lightweight on-device vision-embeddings and local vector indexing (IndexedDB/WASM) for instant botanical taxonomy identification without internet connectivity.',
+      'Built an open-weight, zero-cloud naturalist field companion PWA powered by Google Gemma 2:2B and local vector indexing (IndexedDB/WASM) for on-device botanical specimen classification and offline field logs.',
     architecture: [
-      'Edge embeddings inference running in browser via WebAssembly',
+      'Local-first PWA architecture powered by Google Gemma 2:2B',
       'IndexedDB vector store with cosine similarity ranking',
       'Hierarchical botanical taxonomy lookup cache',
       'PWA background sync queuing observations until connectivity restores',
     ],
-    techStack: ['React', 'TypeScript', 'WASM', 'ONNX Runtime Web', 'IndexedDB', 'Tailwind CSS'],
+    techStack: ['React', 'TypeScript', 'Google Gemma 2:2B', 'ONNX Runtime Web', 'IndexedDB', 'Tailwind CSS'],
     contributions: [
-      'Implemented quantized edge vision classifier running at <180ms inference in-browser',
-      'Engineered conflict-free replicated data types (CRDTs) for multi-naturalist expedition logs',
-      'Optimized thermal throttle management for prolonged field battery longevity',
+      'Implemented local-first PWA architecture utilizing Gemma 2:2B for zero-cloud field observations',
+      'Engineered client-side vector search and taxonomy cache in IndexedDB',
+      'Optimized offline battery consumption and ambient screen exposure for field expeditions',
     ],
-    metricsOrState: 'Field Tested · Open-Source Taxonomy Engine',
+    metricsOrState: 'Edge Architecture Prototype · Offline Vector Search Engine',
     pipeline: [
       {
         step: 'I',
@@ -154,7 +155,7 @@ export const PROJECTS: Project[] = [
       {
         step: 'III',
         name: 'Local Vector K-NN',
-        description: 'Cosine distance ranking against 8,500 indexed regional flora in IndexedDB.',
+        description: 'Cosine distance ranking against local botanical taxonomy vector embeddings in IndexedDB.',
       },
       {
         step: 'IV',
@@ -185,10 +186,11 @@ export const PROJECTS: Project[] = [
 }`,
     },
     links: {
-      accessStatus: 'in-development',
-      accessLabel: 'Active Field Testing · Early Access',
+      github: 'https://github.com/OmkarD09/trailscribe',
+      accessStatus: 'public',
+      accessLabel: 'Open Source · Hacktoberfest',
       accessNote:
-        'Quantized ONNX models and offline IndexedDB taxonomy indexes are undergoing field benchmark audits. Code access is shared with botanical research collaborators.',
+        'Zero-cloud naturalist companion PWA engineered for Hacktoberfest 2026 (Track: Touch Grass & Best Use of Gemma). Apache-2.0 licensed.',
       inquirySubject: 'Early Access: TrailScribe Taxonomy Engine',
     },
   },
@@ -200,20 +202,20 @@ export const PROJECTS: Project[] = [
     problem:
       'Modern web apps rely on hundreds of transitive dependencies where a single breaking release, security flaw, or abandoned library halts production pipelines or introduces zero-day vulnerabilities.',
     solution:
-      'Designed a proactive developer tool that traverses abstract syntax trees (AST), predicts breaking upstream changes before upgrades, and synthesizes automated compatibility polyfills using isolated codemods.',
+      'Designed an AI-assisted dependency resilience and exit capsule engine using Gemma 4 and AST traversal to detect abandoned dependencies, inspect breaking API shifts, and generate deterministic migration capsules.',
     architecture: [
       'Static dependency graph topology and vulnerability traversal',
-      'Semantic AST diffing engine comparing public export signatures',
-      'Automated synthetic test generation for upgrade regression checks',
-      'Deterministic codemod generation for breaking API migration',
+      'AST inspection comparing upstream public signatures across releases',
+      'Deterministic verification harness running regression test suites',
+      'Gemma 4 migration capsule generator for automated library modernization',
     ],
-    techStack: ['TypeScript', 'Node.js', 'Babel / SWC AST', 'CLI Runtime', 'GitHub Actions'],
+    techStack: ['Python 3.12', 'Gemma 4', 'AST Analysis', 'Static Verification', 'GitHub Actions'],
     contributions: [
-      'Built lockfile topological parser resolving multi-level transitive cycle conflicts',
-      'Authored AST translation heuristics converting deprecated API calls automatically',
-      'Designed zero-telemetry CLI runtime for enterprise security compliance',
+      'Constructed AST dependency analyzer detecting deprecated libraries and signature incompatibilities',
+      'Architected deterministic verification harness running test suites before and after migration capsules',
+      'Authored structured migration recipes for modernizing legacy dependencies to Python 3.12+ built-ins',
     ],
-    metricsOrState: 'Developer Tooling · OSS Beta Release',
+    metricsOrState: 'Developer Tooling Prototype · AST Compatibility Engine',
     pipeline: [
       {
         step: 'I',
@@ -255,10 +257,11 @@ export const PROJECTS: Project[] = [
 }`,
     },
     links: {
-      accessStatus: 'private',
-      accessLabel: 'Developer Preview · Inquire Access',
+      github: 'https://github.com/OmkarD09/H26_ImpactForge_Resilify',
+      accessStatus: 'public',
+      accessLabel: 'Open Source · ImpactForge',
       accessNote:
-        'AST diffing algorithms and automated codemod transformers are currently in private developer testing. Early CLI binaries are provided upon inquiry.',
+        'AI-assisted dependency resilience and exit capsule engine engineered for ImpactForge Hackathon (Track 1: Gemma 4 Dependency Resilience).',
       inquirySubject: 'Developer Preview Access: Resilify',
     },
   },
@@ -270,40 +273,40 @@ export const PROJECTS: Project[] = [
     problem:
       'Freelancers and boutique engineering studios lose thousands annually in unpaid invoices and delayed collections due to awkward, manual follow-up timing and lack of client payment risk intelligence.',
     solution:
-      'Created an autonomous receivables system that predicts default risk through payment behavior scoring and dispatches personalized, multi-stage communication cadences with context-aware tone adjustments.',
+      'Created an AI-powered invoice risk assistant using Prior Labs TabPFN for tabular risk estimation on small historical ledgers and Google Gemma for drafting calibrated, relationship-preserving payment follow-ups.',
     architecture: [
-      'Historical accounts-receivable aging and behavioral probability model',
-      'Event-driven agent scheduling for proactive reminder dispatches',
-      'Adaptive communication engine tuning formality based on relationship tenure',
-      'Stripe & Banking reconciliation webhook processor',
+      'Prior Labs TabPFN tabular model predicting late payment probability',
+      'Context-aware follow-up drafting using Google Gemma open weights',
+      'Direct Gmail compose and desktop mail client handoff via mailto:',
+      'Privacy-first in-memory workflow with zero persistent PII storage',
     ],
-    techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'Trigger.dev', 'Stripe API'],
+    techStack: ['Next.js', 'TypeScript', 'FastAPI', 'Prior Labs TabPFN', 'Google Gemma', 'Tailwind CSS'],
     contributions: [
-      'Architected state machine governing debt collection communication escalations',
-      'Designed risk assessment scoring based on historical payment delinquency vectors',
-      'Engineered client portal with friction-free one-click settlement affordances',
+      'Implemented tabular payment risk quantification using Prior Labs TabPFN on client payment histories',
+      'Built contextual follow-up generation using Google Gemma with risk-tiered tone adjustment',
+      'Designed privacy-first in-memory workflow with zero persistent PII storage and direct Gmail/mailto handoff',
     ],
-    metricsOrState: 'Production System · Tested on $120k+ Invoice Volumes',
+    metricsOrState: 'System Prototype · Behavioral Risk Scoring & Follow-Up Workflow',
     pipeline: [
       {
         step: 'I',
         name: 'Ledger Ingestion',
-        description: 'Syncs historical invoices, aging buckets, and settlement events from Stripe.',
+        description: 'Parses invoice aging and client settlement history without cloud persistence.',
       },
       {
         step: 'II',
-        name: 'Behavior Scoring',
-        description: 'Calculates counterparty delinquency probability using historical payment timing.',
+        name: 'TabPFN Risk Model',
+        description: 'Quantifies late payment probability via tabular prior-data fitted networks.',
       },
       {
         step: 'III',
-        name: 'Cadence Engine',
-        description: 'Dispatches multi-stage notifications adapted to client relationship tenure.',
+        name: 'Gemma Follow-Up',
+        description: 'Drafts calibrated, context-sensitive follow-up messages based on risk tier.',
       },
       {
         step: 'IV',
-        name: 'Settlement Portal',
-        description: 'Provides one-click direct payment links with automatic ledger reconciliation.',
+        name: 'Mail Handoff',
+        description: 'Pre-populates recipient and drafted body directly into user Gmail compose.',
       },
     ],
     codeSnippet: {
@@ -322,10 +325,11 @@ export const PROJECTS: Project[] = [
 }`,
     },
     links: {
-      accessStatus: 'proprietary',
-      accessLabel: 'Proprietary System · Client Confidential',
+      github: 'https://github.com/OmkarD09/CashNudge',
+      accessStatus: 'public',
+      accessLabel: 'Open Source · GitHub',
       accessNote:
-        'Live fintech system governing receivables data. System architecture diagrams and state machine specifications are presented during technical interviews.',
+        'AI-powered invoice risk estimation and payment follow-up assistant built with TabPFN, Gemma, FastAPI, and Next.js.',
       inquirySubject: 'Architecture Briefing: CashNudge',
     },
   },
@@ -337,20 +341,20 @@ export const PROJECTS: Project[] = [
     problem:
       'Municipal electoral data, candidate criminal disclosures, and ward-level budget allocations in Mumbai are buried in opaque PDF scans, preventing citizens from making informed voting decisions.',
     solution:
-      'Engineered a high-performance open-access civic transparency dashboard that parses public election commission filings into searchable candidate profiles, ward development report cards, and civic issue trackers.',
+      'Engineered a digital report card for Mumbai election candidates that consolidates public disclosures into searchable profiles, tracks promises across 227 wards, and generates AI-powered civic insights.',
     architecture: [
-      'OCR and data extraction pipeline ingesting scanned election affidavits',
+      'Automated sync engine normalizing election filings and candidate disclosures',
       'Normalized schema modeling candidate assets, liabilities, and legal disclosures',
-      'Ward-level geospatial mapping linked to municipal spending data',
-      'Lightweight edge-cached SSR frontend optimized for 3G mobile devices',
+      'Ward-level geospatial mapping covering 227 municipal wards',
+      'Lightweight server and client architecture with Gemini AI civic summaries',
     ],
-    techStack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Tailwind CSS', 'MapLibre GL', 'Vercel Edge'],
+    techStack: ['React 19', 'TypeScript', 'Node.js', 'Express', 'MongoDB / Drizzle', 'Gemini AI'],
     contributions: [
-      'Constructed automated OCR extraction pipelines converting messy affidavits to structured JSON',
-      'Implemented ward boundary map rendering with 60fps vector tiles on budget smartphones',
-      'Authored transparent data verification methodology ensuring zero political bias',
+      'Constructed public disclosure ingestion pipeline normalizing candidate criminal, asset, and educational records',
+      'Implemented ward-level civic report cards tracking candidate promises across Mumbai municipal wards',
+      'Engineered Gemini AI integration for objective, non-partisan candidate background summaries',
     ],
-    metricsOrState: 'Public Civic Initiative · Serving Mumbai Citizens',
+    metricsOrState: 'Public Civic Initiative · Open Data Infrastructure in Development',
     pipeline: [
       {
         step: 'I',
@@ -370,7 +374,7 @@ export const PROJECTS: Project[] = [
       {
         step: 'IV',
         name: 'Edge Cache SSR',
-        description: 'Serves pre-rendered candidate profiles with sub-80ms load times on mobile 3G.',
+        description: 'Serves pre-rendered candidate profiles via edge caching optimized for high-latency mobile networks.',
       },
     ],
     codeSnippet: {
@@ -399,8 +403,9 @@ export const PROJECTS: Project[] = [
 }`,
     },
     links: {
+      github: 'https://github.com/OmkarD09/JanTrack-Mumbai',
       accessStatus: 'in-development',
-      accessLabel: 'Public Civic Initiative · Inquire Collaboration',
+      accessLabel: 'Public Civic Initiative · Open Source',
       accessNote:
         'Civic open-data infrastructure and OCR parsing models for municipal disclosures. Contributions and civic partnership inquiries are welcomed.',
       inquirySubject: 'Civic Collab: JanTrack Mumbai',
@@ -412,7 +417,7 @@ export const CAPABILITIES = [
   {
     area: 'Full-Stack Architecture',
     statement:
-      'Designing scalable distributed frontends, server-rendered application boundaries, and resilient backend pipelines that maintain sub-100ms response targets under scale.',
+      'Designing scalable distributed frontends, server-rendered application boundaries, and resilient backend pipelines designed for low-latency responsiveness under scale.',
     technologies: ['Next.js App Router', 'React 19', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
   },
   {
@@ -425,7 +430,7 @@ export const CAPABILITIES = [
     area: 'Product Craft & Systems',
     statement:
       'Executing distinctive art-directed interfaces with editorial typography, physical micro-motion, strict accessibility compliance, and zero generic boilerplate.',
-    technologies: ['Design Tokens', 'Motion for React', 'WCAG AAA Standards', 'Performance Tuning', 'Component Architecture'],
+    technologies: ['Design Tokens', 'Motion for React', '14.8:1 Contrast Ratio', 'Performance Tuning', 'Component Architecture'],
   },
   {
     area: 'Developer Tooling & Infrastructure',
