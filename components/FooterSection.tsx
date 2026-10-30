@@ -9,99 +9,103 @@ export function FooterSection() {
   };
 
   return (
-    <footer id="contact" className="pt-28 pb-20 bg-obsidian text-warm-ivory">
-      {/* Monumental Wordmark Anchor */}
-      <div className="pb-20 mb-20">
-        <span className="text-electric-apricot text-sm font-semibold tracking-normal mb-4 block">
-          Initiate Conversation
+    <footer id="contact" className="pt-28 pb-16 bg-obsidian text-warm-ivory">
+      {/* Monumental Kinetic Headline */}
+      <div className="pb-16 md:pb-24">
+        <span className="text-electric-apricot text-xs font-semibold tracking-wide mb-4 block">
+          INITIATE CONVERSATION
         </span>
-        <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-display font-extrabold tracking-tight text-warm-ivory leading-[0.95]">
-          Let’s build what’s next.
+
+        <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] xl:text-[6.2rem] font-display font-extrabold tracking-tight text-warm-ivory leading-[1.0] sm:leading-[0.98]">
+          <span className="block overflow-hidden whitespace-nowrap">
+            LET&apos;S BUILD
+          </span>
+          <span className="block overflow-hidden whitespace-nowrap text-warm-ivory mt-2 sm:mt-3">
+            WHAT&apos;S NEXT<span className="text-electric-apricot">.</span>
+          </span>
         </h2>
       </div>
 
-      {/* Contact Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-20">
-        {/* Direct Email Connection */}
-        <div className="md:col-span-6 flex flex-col gap-4">
-          <span className="text-sm font-semibold text-natural-taupe">
-            Direct Inquiries
-          </span>
-          <a
-            href="mailto:contact@omkar.dev"
-            className="text-2xl sm:text-4xl font-display font-bold text-warm-ivory hover:text-electric-apricot transition-colors duration-200 inline-flex items-center gap-3 self-start"
-          >
-            <span>contact@omkar.dev</span>
-            <ArrowUpRight className="w-6 h-6 text-electric-apricot" />
-          </a>
-          <p className="text-base text-natural-taupe max-w-md leading-relaxed mt-2">
-            Computer Engineering student building full-stack products and AI-powered applications.
-            Available for software engineering roles, internships, and collaborative development.
+      {/* Main Footer Interaction Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16">
+        {/* Left Column: Direct Invitation & Positioning (6 cols) */}
+        <div className="lg:col-span-6 flex flex-col gap-6">
+          <p className="text-base sm:text-lg text-natural-taupe max-w-lg leading-relaxed">
+            I am currently open to engineering roles, ambitious product collaborations,
+            and high-impact developer tooling initiatives. If you are building something
+            rigorous, let&apos;s talk.
           </p>
-        </div>
 
-        {/* Network & Presence Links */}
-        <div className="md:col-span-3 flex flex-col gap-4">
-          <span className="text-sm font-semibold text-natural-taupe">
-            Profiles &amp; Code
-          </span>
-          <a
-            href="https://github.com/OmkarD09"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-base text-warm-ivory hover:text-electric-apricot transition-colors duration-200"
-          >
-            <Code2 className="w-4 h-4 text-natural-taupe" />
-            <span>GitHub</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-natural-taupe" />
-          </a>
-          <a
-            href="https://linkedin.com/in/omkardhakane"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-base text-warm-ivory hover:text-electric-apricot transition-colors duration-200"
-          >
-            <Globe className="w-4 h-4 text-natural-taupe" />
-            <span>LinkedIn</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-natural-taupe" />
-          </a>
-          <a
-            href="mailto:contact@omkar.dev"
-            className="inline-flex items-center gap-2 text-base text-warm-ivory hover:text-electric-apricot transition-colors duration-200"
-          >
-            <Mail className="w-4 h-4 text-natural-taupe" />
-            <span>Email</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-natural-taupe" />
-          </a>
-        </div>
-
-        {/* System Specs Column */}
-        <div className="md:col-span-3 flex flex-col gap-4">
-          <span className="text-sm font-semibold text-natural-taupe">
-            System Spec
-          </span>
-          <div className="flex flex-col gap-2 text-sm text-natural-taupe">
-            <div>Framework: Next.js 16 App Router</div>
-            <div>Runtime: React 19 + Turbopack</div>
-            <div>Palette: Dark Organic (#151515)</div>
-            <div>A11y: 14.8:1 AAA Text Contrast</div>
+          <div className="flex flex-col gap-2 pt-2">
+            <span className="text-xs text-taupe-muted font-medium">DIRECT CHANNEL</span>
+            <a
+              href="mailto:dhakaneomkar009@gmail.com"
+              className="text-xl sm:text-2xl font-display font-bold text-warm-ivory hover:text-electric-apricot transition-colors duration-200 self-start"
+            >
+              dhakaneomkar009@gmail.com
+            </a>
           </div>
+        </div>
+
+        {/* Right Column: Verified Network & Repositories (6 cols) */}
+        <div className="lg:col-span-6 flex flex-col justify-between gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a
+              href="https://github.com/OmkarD09"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group p-5 bg-soft-charcoal/80 rounded-lg border border-charcoal-border hover:border-electric-apricot/50 transition-colors flex items-center justify-between"
+            >
+              <div className="flex items-center gap-3">
+                <Code2 className="w-4 h-4 text-electric-apricot" />
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold text-warm-ivory">GitHub</span>
+                  <span className="text-xs text-natural-taupe">@OmkarD09</span>
+                </div>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-natural-taupe group-hover:text-electric-apricot group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+
+            <a
+              href="https://linkedin.com/in/omkardhakane"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group p-5 bg-soft-charcoal/80 rounded-lg border border-charcoal-border hover:border-electric-apricot/50 transition-colors flex items-center justify-between"
+            >
+              <div className="flex items-center gap-3">
+                <Globe className="w-4 h-4 text-electric-apricot" />
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold text-warm-ivory">LinkedIn</span>
+                  <span className="text-xs text-natural-taupe">omkardhakane</span>
+                </div>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-natural-taupe group-hover:text-electric-apricot group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+          </div>
+
+          {/* Quick Scroll to Top */}
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="group self-start inline-flex items-center gap-2 text-xs text-natural-taupe hover:text-warm-ivory transition-colors cursor-pointer"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5 text-electric-apricot transition-transform duration-200 group-hover:-translate-y-1" />
+          </button>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="pt-10 flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-natural-taupe">
+      {/* Bottom Metadata Bar */}
+      <div className="pt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-taupe-muted">
         <div>
-          © {new Date().getFullYear()} Omkar Dhakane. All rights reserved.
+          <span>&copy; {new Date().getFullYear()} Omkar Dhakane.</span>
+          <span className="ml-2">Crafted with Next.js 16, React 19 &amp; GSAP.</span>
         </div>
 
-        <button
-          onClick={scrollToTop}
-          className="inline-flex items-center gap-2 text-warm-ivory hover:text-electric-apricot transition-colors cursor-pointer"
-        >
-          <span>Back to Top</span>
-          <ArrowUp className="w-4 h-4" />
-        </button>
+        <div className="flex items-center gap-4">
+          <samp className="font-mono text-[11px]">BASED IN // MUMBAI, INDIA</samp>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+        </div>
       </div>
     </footer>
   );

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Navigation } from '@/components/Navigation';
 import { HeroSection } from '@/components/HeroSection';
-import { ProjectShowcase } from '@/components/ProjectShowcase';
+import { IntroNarrative } from '@/components/IntroNarrative';
+import { PinnedProjectShowcase } from '@/components/PinnedProjectShowcase';
 import { CapabilitiesSection } from '@/components/CapabilitiesSection';
 import { PrinciplesSection } from '@/components/PrinciplesSection';
 import { FooterSection } from '@/components/FooterSection';
@@ -11,9 +12,10 @@ export default function Home() {
   return (
     <div className="min-h-[100dvh] bg-obsidian text-warm-ivory selection:bg-electric-apricot selection:text-obsidian">
       <Navigation />
-      <main className="max-w-7xl mx-auto px-6 md:px-12">
+      <main className="max-w-7xl 2xl:max-w-[1400px] mx-auto px-6 md:px-12">
         <HeroSection />
-        <ProjectShowcase />
+        <IntroNarrative />
+        <PinnedProjectShowcase />
         <CapabilitiesSection />
         <PrinciplesSection />
         <FooterSection />
